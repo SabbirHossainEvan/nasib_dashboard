@@ -82,7 +82,7 @@ const Header = ({ onLogout }) => {
         <input
           type="text"
           placeholder="Search ..."
-          className="w-full bg-black border border-gray-700 rounded-xl py-2 pl-10 pr-4 text-gray-300 focus:outline-none focus:border-yellow-600/50"
+          className="w-full bg-[#0a111a] border border-gray-700 rounded-xl py-2 pl-10 pr-4 text-gray-300 focus:outline-none focus:border-yellow-600/50"
         />
       </div>
 
@@ -91,7 +91,7 @@ const Header = ({ onLogout }) => {
         <div className="relative" ref={notificationRef}>
           <button
             onClick={handleNotificationClick}
-            className="relative p-2.5 bg-black border border-gray-800 rounded-full text-gray-400 hover:text-white transition-all"
+            className="relative p-2.5 bg-[#0a111a] border border-gray-800 rounded-full text-gray-400 hover:text-white transition-all"
           >
             <Bell size={20} />
             {hasNewNotifications && (
@@ -100,7 +100,7 @@ const Header = ({ onLogout }) => {
           </button>
 
           {isNotificationOpen && (
-            <div className="absolute right-0 mt-3 w-80 bg-[#0f172a] border border-gray-800 rounded-2xl shadow-2xl z-50 overflow-hidden animate-in slide-in-from-top-2 duration-200">
+            <div className="absolute right-0 mt-3 w-80 bg-[#0a111a] border border-gray-800 rounded-2xl shadow-2xl z-50 overflow-hidden animate-in slide-in-from-top-2 duration-200">
               <div className="p-4 border-b border-gray-800 flex justify-between items-center">
                 <h3 className="text-white font-bold text-sm">Notifications</h3>
                 <span className="text-[10px] bg-gray-800 text-gray-400 px-2 py-0.5 rounded">
@@ -129,7 +129,7 @@ const Header = ({ onLogout }) => {
               setIsProfileOpen(!isProfileOpen);
               setIsNotificationOpen(false);
             }}
-            className="flex items-center gap-3 bg-black border border-gray-800 rounded-full p-1 pr-4 hover:border-gray-600 transition-all"
+            className="flex items-center gap-3 bg-[#0a111a] border border-gray-800 rounded-2xl p-2 pr-4 hover:border-gray-600 transition-all"
           >
             <img
               src={userData.avatar}

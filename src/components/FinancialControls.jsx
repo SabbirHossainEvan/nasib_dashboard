@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { Search, ChevronDown } from 'lucide-react';
+import React, { useState } from "react";
+import { Search, ChevronDown } from "lucide-react";
 
 const FinancialControls = () => {
-  // ডাইনামিক ইউজার ডাটা
   const [users] = useState([
     { id: 1, username: "user1", email: "user1@example.com", balance: 9031.87 },
-    { id: 2, username: "user2", email: "user2@example.com", balance: 1500.00 },
+    { id: 2, username: "user2", email: "user2@example.com", balance: 1500.0 },
     { id: 3, username: "user3", email: "user3@example.com", balance: 2797.02 },
-    { id: 4, username: "user4", email: "user4@example.com", balance: 50.00 },
+    { id: 4, username: "user4", email: "user4@example.com", balance: 50.0 },
   ]);
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,7 +15,7 @@ const FinancialControls = () => {
   const [amount, setAmount] = useState("00.0");
   const [reason, setReason] = useState("");
 
-  const filteredUsers = users.filter(user =>
+  const filteredUsers = users.filter((user) =>
     user.username.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -24,13 +23,14 @@ const FinancialControls = () => {
     <div className="bg-[#0b1221] p-8 rounded-2xl text-white font-sans min-h-screen">
       <div className="mb-8">
         <h2 className="text-2xl font-semibold">Financial Controls</h2>
-        <p className="text-gray-400 text-sm">Manage user balances and perform manual adjustments</p>
+        <p className="text-gray-400 text-sm">
+          Manage user balances and perform manual adjustments
+        </p>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6">
-        
         {/* Left Side: Select User List */}
-        <div className="w-full lg:w-[350px] bg-[#0b1221] border border-gray-800 rounded-2xl p-5 shadow-lg">
+        <div className="w-full lg:w-[350px] bg-[#0a111a] border border-gray-800 rounded-2xl p-5 shadow-lg">
           <h3 className="text-sm font-semibold mb-4">Select User</h3>
           <div className="relative mb-4">
             <Search className="absolute left-3 top-3 text-gray-500 w-4 h-4" />
@@ -56,7 +56,9 @@ const FinancialControls = () => {
               >
                 <div className="flex justify-between items-center">
                   <div>
-                    <h4 className="font-bold text-sm text-gray-200">{user.username}</h4>
+                    <h4 className="font-bold text-sm text-gray-200">
+                      {user.username}
+                    </h4>
                     <p className="text-[10px] text-gray-500">{user.email}</p>
                     <p className="text-[11px] text-yellow-500 font-bold mt-1">
                       Balance: ${user.balance.toLocaleString()}
@@ -72,15 +74,19 @@ const FinancialControls = () => {
         </div>
 
         {/* Right Side: Balance Adjustment Form */}
-        <div className="flex-1 bg-[#161f30]/30 border border-gray-800 rounded-2xl p-8 shadow-lg">
+        <div className="flex-1 bg-[#0a111a] border border-gray-800 rounded-2xl p-8 shadow-lg">
           <h3 className="text-lg font-medium mb-6">Balance Adjustment</h3>
-          
+
           <div className="space-y-6">
             {/* Selected User Info Box */}
             <div>
-              <p className="text-xs text-gray-400 mb-2 font-medium">Selected User:</p>
+              <p className="text-xs text-gray-400 mb-2 font-medium">
+                Selected User:
+              </p>
               <div className="bg-[#161f30] border border-gray-800 p-5 rounded-xl">
-                <h4 className="font-bold text-lg text-gray-200">{selectedUser?.username}</h4>
+                <h4 className="font-bold text-lg text-gray-200">
+                  {selectedUser?.username}
+                </h4>
                 <p className="text-xs text-gray-500">{selectedUser?.email}</p>
                 <p className="text-sm text-yellow-500 font-bold mt-1">
                   Balance: ${selectedUser?.balance.toLocaleString()}
@@ -90,34 +96,54 @@ const FinancialControls = () => {
 
             {/* Adjustment Type Radio Buttons */}
             <div>
-              <p className="text-xs text-gray-400 mb-3 font-medium uppercase tracking-wider">Adjustment Type</p>
+              <p className="text-xs text-gray-400 mb-3 font-medium uppercase tracking-wider">
+                Adjustment Type
+              </p>
               <div className="flex gap-8">
                 <label className="flex items-center gap-3 cursor-pointer group">
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition ${
-                    adjustmentType === 'credit' ? 'border-[#2dd4bf]' : 'border-gray-600'
-                  }`}>
-                    {adjustmentType === 'credit' && <div className="w-2.5 h-2.5 bg-[#2dd4bf] rounded-full" />}
+                  <div
+                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition ${
+                      adjustmentType === "credit"
+                        ? "border-[#2dd4bf]"
+                        : "border-gray-600"
+                    }`}
+                  >
+                    {adjustmentType === "credit" && (
+                      <div className="w-2.5 h-2.5 bg-[#2dd4bf] rounded-full" />
+                    )}
                   </div>
-                  <input 
-                    type="radio" className="hidden" 
-                    onChange={() => setAdjustmentType('credit')} 
-                    checked={adjustmentType === 'credit'} 
+                  <input
+                    type="radio"
+                    className="hidden"
+                    onChange={() => setAdjustmentType("credit")}
+                    checked={adjustmentType === "credit"}
                   />
-                  <span className="text-sm font-medium text-gray-200 group-hover:text-white">Credit (Add Funds)</span>
+                  <span className="text-sm font-medium text-gray-200 group-hover:text-white">
+                    Credit (Add Funds)
+                  </span>
                 </label>
 
                 <label className="flex items-center gap-3 cursor-pointer group">
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition ${
-                    adjustmentType === 'debit' ? 'border-[#2dd4bf]' : 'border-gray-600'
-                  }`}>
-                    {adjustmentType === 'debit' && <div className="w-2.5 h-2.5 bg-[#2dd4bf] rounded-full" />}
+                  <div
+                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition ${
+                      adjustmentType === "debit"
+                        ? "border-[#2dd4bf]"
+                        : "border-gray-600"
+                    }`}
+                  >
+                    {adjustmentType === "debit" && (
+                      <div className="w-2.5 h-2.5 bg-[#2dd4bf] rounded-full" />
+                    )}
                   </div>
-                  <input 
-                    type="radio" className="hidden" 
-                    onChange={() => setAdjustmentType('debit')} 
-                    checked={adjustmentType === 'debit'} 
+                  <input
+                    type="radio"
+                    className="hidden"
+                    onChange={() => setAdjustmentType("debit")}
+                    checked={adjustmentType === "debit"}
                   />
-                  <span className="text-sm font-medium text-gray-200 group-hover:text-white">Debit (Remove Funds)</span>
+                  <span className="text-sm font-medium text-gray-200 group-hover:text-white">
+                    Debit (Remove Funds)
+                  </span>
                 </label>
               </div>
             </div>
@@ -135,9 +161,11 @@ const FinancialControls = () => {
 
             {/* Reason Selection */}
             <div className="relative">
-              <p className="text-xs text-gray-400 mb-2 font-medium">Reason for Adjustment</p>
+              <p className="text-xs text-gray-400 mb-2 font-medium">
+                Reason for Adjustment
+              </p>
               <div className="relative">
-                <select 
+                <select
                   className="w-full bg-[#161f30] border border-gray-800 rounded-xl py-4 px-5 appearance-none focus:outline-none focus:border-gray-600 text-gray-400 cursor-pointer text-sm"
                   value={reason}
                   onChange={(e) => setReason(e.target.value)}
@@ -157,7 +185,9 @@ const FinancialControls = () => {
                 Cancel
               </button>
               <button className="flex-1 bg-[#236e6e] hover:bg-[#2a7a7a] text-white font-bold py-3.5 rounded-xl transition text-sm shadow-lg shadow-[#236e6e]/20">
-                {adjustmentType === 'credit' ? 'Credit Account' : 'Debit Account'}
+                {adjustmentType === "credit"
+                  ? "Credit Account"
+                  : "Debit Account"}
               </button>
             </div>
           </div>

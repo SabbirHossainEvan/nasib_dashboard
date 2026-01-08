@@ -4,6 +4,8 @@ import Dashboard from "../pages/Dashboard";
 import UserManagementPage from "../pages/UserManagementPage";
 import FinancialPage from "../pages/FinancialPage";
 import RoundExplorerPage from "../pages/RoundExplorerPage";
+import SystemReportsPage from "../pages/SystemReportsPage";
+import AuditTrailPage from "../pages/AuditTrailPage";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
       {
         path: "round-explorer",
         element: <RoundExplorerPage />,
+      },
+      {
+        path: "system-reports",
+        element: <SystemReportsPage />,
+      },
+      {
+        path: "audit-trail",
+        element: <AuditTrailPage />,
       },
     ],
   },
