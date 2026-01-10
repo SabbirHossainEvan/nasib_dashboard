@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate, Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   Users,
@@ -18,26 +18,34 @@ const Sidebar = ({ onLogout, isOpen, setIsOpen }) => {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   const menuItems = [
-    { name: "Dashboard", path: "/", icon: <LayoutDashboard size={20} /> },
-    { name: "User Management", path: "/users", icon: <Users size={20} /> },
+    {
+      name: "Dashboard",
+      path: "/dashboard",
+      icon: <LayoutDashboard size={20} />,
+    },
+    {
+      name: "User Management",
+      path: "/dashboard/users",
+      icon: <Users size={20} />,
+    },
     {
       name: "Financial Controls",
-      path: "/financial",
+      path: "/dashboard/financial",
       icon: <DollarSign size={20} />,
     },
     {
       name: "Round Explorer",
-      path: "/round-explorer",
+      path: "/dashboard/round-explorer",
       icon: <RotateCcw size={20} />,
     },
     {
       name: "System Reports",
-      path: "/system-reports",
+      path: "/dashboard/system-reports",
       icon: <FileText size={20} />,
     },
     {
       name: "Audit Trail",
-      path: "/audit-trail",
+      path: "/dashboard/audit-trail",
       icon: <ClipboardList size={20} />,
     },
   ];
@@ -46,13 +54,13 @@ const Sidebar = ({ onLogout, isOpen, setIsOpen }) => {
     setIsLogoutModalOpen(false);
     if (onLogout) {
       onLogout();
-      navigate("/");
     }
+    navigate("/");
   };
 
   return (
     <>
-
+      {/* Mobile Overlay */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/60 z-40 lg:hidden"
@@ -62,7 +70,7 @@ const Sidebar = ({ onLogout, isOpen, setIsOpen }) => {
 
       <div
         className={`
-        fixed top-0 left-0 z-50 h-full w-64 bg-[#0E1624] flex flex-col transition-transform duration-300 ease-in-out border-r border-white
+        fixed top-0 left-0 z-50 h-full w-64 bg-[#0E1624] flex flex-col transition-transform duration-300 ease-in-out border-r border-gray-800
         lg:translate-x-0 lg:static 
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
       `}
@@ -74,13 +82,11 @@ const Sidebar = ({ onLogout, isOpen, setIsOpen }) => {
           <X size={24} />
         </button>
 
-
-        <div className="p-5 flex items-center justify-center ">
-          <img src={MyLogo} alt="" />
+        <div className="p-5 flex items-center justify-center">
+          <img src={MyLogo} alt="NASIIB Logo" className="h-12 w-auto" />
         </div>
 
-        <hr className="border-white  mb-4" />
-
+        <hr className="border-gray-800 mb-4 mx-4" />
 
         <nav className="flex-1 px-3 space-y-1 overflow-y-auto custom-scrollbar">
           {menuItems.map((item) => (
@@ -106,6 +112,7 @@ const Sidebar = ({ onLogout, isOpen, setIsOpen }) => {
 
         <div className="p-4 border-t border-gray-800">
           <button
+            type="button"
             onClick={() => setIsLogoutModalOpen(true)}
             className="w-full flex items-center gap-3 px-4 py-3 text-gray-400 hover:text-red-400 transition-colors group"
           >
