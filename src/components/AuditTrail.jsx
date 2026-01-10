@@ -1,17 +1,29 @@
-import React, { useState } from "react";
+
+
+import React, { useState, forwardRef } from "react";
 import { Filter, Download, Calendar } from "lucide-react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
+const CustomInput = forwardRef(({ value, onClick }, ref) => (
+  <div
+    onClick={onClick}
+    ref={ref}
+    className="bg-[#121d2b] gap-3 border border-gray-700 rounded-md py-2 px-4 pr-10 text-sm w-full cursor-pointer flex  justify-between"
+  >
+    <span>{value}</span>
+    <Calendar className="text-gray-500" size={16} />
+  </div>
+));
 
 const AuditTrail = () => {
-
-  const formatDate = (date) => date.toISOString().split("T")[0];
-
   const today = new Date();
   const lastFiveDays = new Date();
   lastFiveDays.setDate(today.getDate() - 5);
 
-
-  const [startDate, setStartDate] = useState(formatDate(lastFiveDays));
-  const [endDate, setEndDate] = useState(formatDate(today));
+  const [startDate, setStartDate] = useState(lastFiveDays);
+  const [endDate, setEndDate] = useState(today);
 
   const auditData = [
     {
@@ -61,27 +73,11 @@ const AuditTrail = () => {
     },
   ];
 
-
-  const handleExport = () => {
-    const headers = "Timestamp,Admin User,Action Type,Details,IP Address\n";
-    const rows = auditData
-      .map(
-        (row) =>
-          `${row.timestamp},${row.admin},${row.type},${row.details},${row.ip}`
-      )
-      .join("\n");
-
-    const blob = new Blob([headers + rows], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `Audit_Trail_${startDate}_to_${endDate}.csv`;
-    link.click();
-  };
+  // Uncomment and use if you want CSV export
+  // const handleExport = () => { ... }
 
   return (
-    <div className="mt-12 m-8  text-white font-sans">
+    <div className="mt-12 m-8 text-white font-sans">
       {/* Title */}
       <div className="mb-6">
         <h2 className="text-2xl font-bold">Audit Trail</h2>
@@ -92,38 +88,38 @@ const AuditTrail = () => {
 
       {/* Filter Bar */}
       <div className="flex flex-wrap items-center gap-4 mb-6 bg-[#0a111a] p-4 rounded-xl border border-gray-800">
-        <div className="flex items-center gap-2 bg-[#121d2b] border border-gray-700 rounded-lg px-3 py-2">
-          <input
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-            className="bg-transparent outline-none text-sm text-gray-300 cursor-pointer"
-          />
-          <Calendar size={16} className="text-gray-500" />
-        </div>
+        <div className="flex items-center gap-3 w-full md:w-auto">
+          <div className="flex-1 ">
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              dateFormat="yyyy-MM-dd"
+              customInput={<CustomInput />}
+            />
+          </div>
 
-        <span className="text-gray-500">to</span>
+          <span className="text-gray-500">to</span>
 
-        <div className="flex items-center gap-2 bg-[#121d2b] border border-gray-700 rounded-lg px-3 py-2">
-          <input
-            type="date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-            className="bg-transparent outline-none text-sm text-gray-300 cursor-pointer"
-          />
-          <Calendar size={16} className="text-gray-500" />
+          <div className="flex-1 ">
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              dateFormat="yyyy-MM-dd"
+              customInput={<CustomInput />}
+            />
+          </div>
         </div>
 
         <button className="flex items-center gap-2 border border-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-800 transition-colors ml-auto">
           <Filter size={16} /> Configure Filters
         </button>
 
-        <button
+        {/* <button
           onClick={handleExport}
           className="flex items-center gap-2 bg-[#2dd4bf]/20 text-[#2dd4bf] border border-[#2dd4bf]/30 px-6 py-2 rounded-lg text-sm font-bold hover:bg-[#2dd4bf]/30 transition-all"
         >
           <Download size={16} /> Export
-        </button>
+        </button> */}
       </div>
 
       {/* Audit Table */}

@@ -1,32 +1,25 @@
-import React from 'react';
-import OverviewSection from '../components/OverviewSection';
-import WageredVsWinnings from '../components/WageredVsWinnings';
-import RTPTrendChart from '../components/RTPTrendChart';
-import RecentGameRounds from '../components/RecentGameRounds';
-import RecentUsers from '../components/RecentUsers';
+import React from "react";
+import OverviewSection from "../components/OverviewSection";
+import WageredVsWinnings from "../components/WageredVsWinnings";
+import RTPTrendChart from "../components/RTPTrendChart";
+
+import RecentGame from "../components/RecentGame";
 
 const Dashboard = () => {
-    return (
+  return (
+    <div>
+      <OverviewSection />
+      <div className="grid grid-cols-2 gap-4 m-8">
         <div>
-            <OverviewSection />
-            <div className='grid grid-cols-2 gap-4 m-10'>
-                <div>
-                    <WageredVsWinnings />
-                </div>
-                <div>
-                    <RTPTrendChart />
-                </div>
-            </div>
-            <div className='grid grid-cols-2 gap-4 m-10'>
-                <div>
-                    <RecentGameRounds />
-                </div>
-                <div>
-                    <RecentUsers />
-                </div>
-            </div>
+          <WageredVsWinnings />
         </div>
-    );
-}
+        <div>
+          <RTPTrendChart />
+        </div>
+      </div>
+      <RecentGame />
+    </div>
+  );
+};
 
 export default Dashboard;

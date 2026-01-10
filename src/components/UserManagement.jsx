@@ -237,9 +237,9 @@ const UserManagement = () => {
       {/* --- MODAL SECTION --- */}
       {selectedUser && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-[#0b1221] w-full max-w-[600px] rounded-2xl border border-gray-800 overflow-hidden shadow-2xl">
+          <div className="bg-[#0a111a] w-full max-w-[600px] rounded-2xl border border-gray-800 overflow-hidden shadow-2xl">
             {/* Modal Header */}
-            <div className="p-5 flex justify-between items-center border-b border-gray-800">
+            < div className="p-5 flex justify-between items-center border-b border-gray-800">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-xl">
                   👤
@@ -262,7 +262,7 @@ const UserManagement = () => {
             </div>
 
             {/* Quick Stats Grid */}
-            <div className="grid grid-cols-2 gap-3 p-4">
+            {/* <div className="grid grid-cols-2 gap-3 p-4">
               <InfoBox label="Email" value={selectedUser.email} />
               <InfoBox label="Status" value={selectedUser.status} isStatus />
               <InfoBox label="Balance" value={`$${selectedUser.balance}`} />
@@ -272,10 +272,10 @@ const UserManagement = () => {
               />
               <InfoBox label="User Type" value={selectedUser.type} />
               <InfoBox label="Total Won" value={`$${selectedUser.totalWon}`} />
-            </div>
+            </div> */}
 
             {/* Tabs */}
-            <div className="flex px-5 gap-6 text-[11px] font-bold uppercase border-b border-gray-800">
+            <div className="flex px-5 gap-6 mt-5 text-[11px] font-bold uppercase border-b border-gray-800">
               {["Details", "Login History", "Game Logs"].map((tab) => (
                 <button
                   key={tab}
@@ -338,6 +338,8 @@ const UserManagement = () => {
                       <tr>
                         <th className="p-2">Date</th>
                         <th className="p-2">Game</th>
+                        <th className="p-2">Stake</th>
+                        <th className="p-2">Payout</th>
                         <th className="p-2 text-center">Result</th>
                         <th className="p-2 text-right">Net</th>
                       </tr>
@@ -346,6 +348,8 @@ const UserManagement = () => {
                       <tr className="border-b border-gray-800/50">
                         <td className="p-2 text-gray-400">12/04/17</td>
                         <td className="p-2 font-medium">Scratch Card</td>
+                        <td className="p-2 font-medium">$50</td>
+                        <td className="p-2 font-medium">$50</td>
                         <td className="p-2 text-center text-green-400 font-bold">
                           Win
                         </td>
@@ -354,6 +358,8 @@ const UserManagement = () => {
                       <tr>
                         <td className="p-2 text-gray-400">8/30/14</td>
                         <td className="p-2 font-medium">Spin Wheel</td>
+                                                <td className="p-2 font-medium">$50</td>
+                        <td className="p-2 font-medium">$50</td>
                         <td className="p-2 text-center text-red-400 font-bold">
                           Loss
                         </td>

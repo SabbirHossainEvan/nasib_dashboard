@@ -76,15 +76,15 @@ const ReportPreview = () => {
               <th className="px-4 py-4 rounded-r-lg font-bold">Status</th>
             </tr>
           </thead>
-          <tbody className="text-sm">
+          <tbody className="text-sm ">
             {reportData.map((row, index) => (
               <tr key={index} className="hover:bg-[#121d2b] transition-all group border-b border-gray-800">
-                <td className="px-4 py-4 text-white font-medium">{row.username}</td>
-                <td className="px-4 py-4 text-gray-500">{row.email}</td>
-                <td className="px-4 py-4 text-white font-bold">${row.balance}</td>
-                <td className="px-4 py-4 text-gray-400">${row.totalWagered}</td>
-                <td className="px-4 py-4 text-gray-400">${row.totalWon}</td>
-                <td className="px-4 py-4">
+                <td className="px-4 py-4 text-white font-medium border-b border-gray-800">{row.username}</td>
+                <td className="px-4 py-4 text-gray-500 border-b border-gray-800">{row.email}</td>
+                <td className="px-4 py-4 text-white font-bold border-b border-gray-800">${row.balance}</td>
+                <td className="px-4 py-4 text-gray-400 border-b border-gray-800">${row.totalWagered}</td>
+                <td className="px-4 py-4 text-gray-400 border-b border-gray-800">${row.totalWon}</td>
+                <td className="px-4 py-4 border-b border-gray-800">
                   <span className="bg-[#121d2b] border border-gray-800 text-[#2dd4bf] text-[10px] font-bold px-3 py-1 rounded-full ring-1 ring-[#2dd4bf]/20">
                     {row.status}
                   </span>

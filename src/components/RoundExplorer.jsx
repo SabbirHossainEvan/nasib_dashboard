@@ -100,6 +100,10 @@ const RoundExplorer = () => {
 
   return (
     <div className="bg-[#0b1221] p-6 rounded-2xl text-white font-sans min-h-screen">
+      <div className="mb-8">
+        <h1 className="text-2xl font-bold">Round Explorer</h1>
+        <p className="text-gray-400 text-sm">Inspect game rounds and related data</p>
+      </div>
       {/* Search & Filter Header */}
       <div className="bg-[#0a111a] border border-gray-800 p-4 rounded-xl flex flex-wrap gap-4 items-center justify-between mb-6">
         <div className="flex flex-wrap gap-4 items-center flex-1">
